@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전체 상품</title>
+</head>
+    <h2>상품목록</h2>
+    <hr>
+    <table>
+        <thead>
+        <tr>
+            <th>상품명</th>
+            <th>수량</th>
+            <th>가격</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${list}">
+            <td><a href="/products/47" th:href="@{/products/{pid}(pid=${product.pId})}">[[${product.pname}]]</a> </td>
+            <td>[[${product.count}]]</td>
+            <td>[[${product.price}]]</td>
+        </tr>
+        </tbody>
+    </table>
+    <div><button type="button" id="addBtn">등록</button></div>
+<script th:inline="javascript">
+    addBtn.addEventListener('click',e=>{
+        location.href = `/products/add`;
+    });
+
+
+</script>
+<body>
+
+</body>
+</html>

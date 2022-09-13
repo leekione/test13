@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품조회</title>
+</head>
+<h1>상품조회</h1>
+<body>
+    <form action="" method="" th:object="${form}">
+        <div><label for="">상품명</label><input type="text" readonly th:field="*{pname}"></div>
+        <div><label for="">갯수</label><input type="text" readonly th:field="*{count}"></div>
+        <div><label for="">가격</label><input type="text" readonly th:field="*{price}"></div>
+        <div>
+            <button type="button" id="updateBtn">수정</button>
+            <button type="button" id="delBtn">삭제</button>
+            <button type="button" id="listBtn">목록</button>
+        </div>
+</form>
+    <script th:inline="javascript">
+        updateBtn.addEventListener('click',e=>{
+            location.href = [[@{|/products/${form.pId}/edit|}]];
+        });
+
+        delBtn.addEventListener('click',e=>{
+            if(!confirm('삭제하시겠습니까?')) return;
+            location.href = [[@{|/products/${form.pId}/del|}]];
+            });
+        listBtn.addEventListener('click',e=>{
+            location.href = [[@{/products/all}]];
+            });
+    </script>
+</body>
+</html>
