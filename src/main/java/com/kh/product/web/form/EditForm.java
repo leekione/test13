@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class EditForm {
-    private Long pd;
+    private Long pid;
     private String pname;
     private Integer count;
     private Integer price;
